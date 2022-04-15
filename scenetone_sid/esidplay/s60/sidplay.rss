@@ -1,0 +1,99 @@
+// sidplay.rss
+//
+// Copyright (c) 2000-2002 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+
+/**
+ * @file sidplay.rss
+ *
+ * Resource file for the AVKON gui (Series 60 platform)
+ */
+
+NAME SIDP
+
+// common
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <eikcore.rsg>
+#include "sidplay.hrh"
+#include "sidplay.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="sidplay"; }
+
+
+RESOURCE EIK_APP_INFO
+	{
+    status_pane = R_AVKON_STATUS_PANE_LAYOUT_USUAL;
+    hotkeys = r_sidplay_hotkeys;
+    menubar = r_sidplay_akn_menubar;
+    cba     = R_AVKON_SOFTKEYS_SELECTION_LIST;    
+	}
+
+RESOURCE MENU_BAR r_sidplay_akn_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_sidplay_menupane;
+            txt = "heisann";
+            }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_sidplay_menupane
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ECmdFile;
+            cascade = r_sidplay_file_menu;
+            txt = "file";
+            },
+        MENU_ITEM
+            {
+            command = ECmdAbout;
+            cascade = r_sidplay_about_menu;
+            txt = "about";
+            }
+        };
+    }
+
+
+/**
+ * About dialog box (note)
+ */
+RESOURCE DIALOG r_sidplay_about_note
+    {
+    flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+            EEikDialogFlagCbaButtons;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = ESidplayCtrlIdAboutNote;
+            control = AVERELL_NOTE
+                {
+                layout = EGeneralLayout;
+                singular_label = qtn_sidplay_inf_singular;
+                };
+            }
+        };
+    }
+
+
+#include "sidplay.rsh"
+

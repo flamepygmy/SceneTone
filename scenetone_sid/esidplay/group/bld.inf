@@ -1,0 +1,26 @@
+// BLD.INF
+//
+// Copyright (c) 2001-2002 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License version 2 as
+//    published by the Free Software Foundation
+//
+
+PRJ_PLATFORMS
+
+PRJ_EXPORTS
+
+..\docs\commando.sid \epoc32\wins\c\sid\commando.sid
+..\docs\gameover.sid \epoc32\wins\c\sid\gameover.sid
+..\docs\savage.sid   \epoc32\wins\c\sid\savage.sid
+
+PRJ_MMPFILES
+
+libsidplay.mmp
+esidplay.mmp
+sidplay.mmp
+..\recogs\recsid.mmp
+..\recogs\recsidfile.mmp
+
+PRJ_TESTMMPFILES

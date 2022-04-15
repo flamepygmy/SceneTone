@@ -1,0 +1,130 @@
+15. April 2022:
+
+  This is a snapshot of the SceneTone project sources as they exist in my private local git repo. This is released
+  mainly for archival purposes and/or if anyone still is using Symbian/S60 devices and want to build this thing.
+
+  Everything is released as-is and without any warranties of whether it will compile. Notably missing from here are
+  the external pacakges esidplay and libmikmod it depends on, though they may still be available.
+
+  Everything below this comment is mostly as it was when it was last released (0.11). I don't exactly know if this
+  contains some work past 0.11 release or not.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ Scenetone
+
+ (c) 2006 Jani Vaarala (flame / pygmyprojects)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ What is it
+------------
+
+This program is a music player for Nokia S60 3rd edition platform that is able to play old module formats
+such as Soundtracker, Protracker, S3M, and XM. Also, Commodore 64 .SID files can be played. Player also
+supports generating of .WAV files to a fixed location in the file system to be used as a ringtone.
+Support for these formats come from external packages (parts of these packages are linked to the application):
+
+	- ESidPlay 014 (Alfred E. Heggestad), EPOC Sid player that includes libsidplay (Michael Schwendt)
+	    * libsidplay is licensed under GPL
+	    * download from http://esidplay.sourceforge.net/pub/esidplay.src.014.tar.gz
+
+	- libmikmod 3.1.11 (Jef Poskanzer)
+ 	    * libmikmod is licensed under  LGPL
+	    * download from http://mikmod.raphnet.net/files/libmikmod-3.1.11.tar.gz
+
+
+Scenetone itself is licensed under GPL.
+
+
+Note: scenetone is a hobby project (which I don't have much time for), so please don't spam me with millions of feature requests.
+If you do have some features that you want to the player (and they are generally usefull for people using the SW :-), send me a diff
+against the latest release with a short explanation what the patch actually does.
+
+ How to Fetch
+--------------
+
+  1. Download S60 3rd edition SDK and install it with GCCE compiler support
+
+  2. Copy this project under your SDK directory (where EPOC32 directory is located)
+
+  3. Download ESidPlay and uncompress to folder:
+
+	scenetone/scenetone_sid		(/esidplay)
+
+  4. Download libmikmod 3.1.11 and uncompress to folder:
+
+	scenetone/scenetone_mikmod	(/libmikmod-3.1.11)
+
+ How to configure
+------------------
+
+  1. Go to scenetone/scenetone_mikmod/libmikdmod-3.1.11 folder (under cygwin, BUT without Symbian tools in path) and type:
+
+	./configure
+
+  2. Go to scenetone/scenetone_sid and run patch under cygwin (to patch some friend errors in code):
+
+	patch -p0 < ./fix_friend_errors.diff
+
+ How to Compile
+----------------
+
+ Alternative 1 (ready made build script for cygwin that has been rigged for Symbian compilation):
+
+  1. Just type 'build.sh'
+
+ Alternative 2:
+
+  1. Go to scenetone/scenetone_mikmod/group folder and type (will compile mikmod support):
+
+	bldmake bldfiles
+	abld build gcce urel
+
+  2. Go to scenetone/scenetone_sid/group folder and type (will compile sidplay support):
+
+	bldmake bldfiles
+	abld build gcce urel
+
+  3. Go to scenetone/scenetone_wav/group folder and type (will compile wav support):
+
+	bldmake bldfiles
+	abld build gcce urel
+
+  4. Go to scenetone/group folder and type (will compile the actual application):
+
+	bldmake bldfiles
+	abld build gcce urel
+
+  5. Go to scenetone/sis folder and type (will create a install file and sign it with the self-signing
+     key provided):
+
+	createsis create scenetone_gcce.pkg
+
+Now your install file is ready in the scenetone/sis folder as "scenetone_gcce.sis". This can be installed
+to the phone.
+
+
+
+ How to use
+------------
+
+Press menu button to choose a file to play from the file system. When the tune starts playing the controls are:
+
+   UP KEY = next subsong, DOWN KEY = previous subsong, LEFT KEY = decrease volume, RIGHT KEY = increase volume
+   "4" key = previous module in the last used folder for module selection, "6" key = next module.
+
+When certain subsong of a module is playing, you can select "Generate WAV" from the menu to generate a .WAV
+file to "c:\Data\Sounds\Digital\scenetone.wav". This .WAV file can be set as your ringtone in your profile
+settings. If you keep this .WAV file as your ringtone, you can generate new .WAV files directly from the
+scenetone without the need to change profile settings.
+
+After you have chosen some directory and started song playback from that directory, select "Grab Defaultpath"
+from the menu to grab that directory as the future default directory to open modules from. Note: the setting
+will only be stored at the application exit for now.
+
+--Jani;
+

@@ -1,0 +1,93 @@
+//  ---------------------------------------------------------------------------
+//  This file is part of Scenetone, a music player aimed for playing old
+//  music tracker modules and C64 tunes.
+//
+//  Copyright (C) 2006  Jani Vaarala <flame@pygmyprojects.com>
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//  --------------------------------------------------------------------------
+
+TARGET        Scenetone.exe
+TARGETTYPE    exe
+UID           0x0 0xA0001186
+SECUREID      0xA0001186
+VENDORID      0
+
+COMPRESSTARGET
+
+EPOCHEAPSIZE  100000 5000000
+EPOCSTACKSIZE 65536
+CAPABILITY    NONE
+
+// This MACRO is used for including MP3 encoder (Shine)... Excluded from GPL version
+//MACRO	      SCENETONE_INCLUDE_SHINE
+
+//MACRO 	SCENETONE_INCLUDE_VISUALIZER
+
+// MACRO SCENETONE_PYTHON_VERSION
+
+// OPTION GCCE   -O3 --fast-math
+//OPTION ARMCC    -Otime -O3 --forceinline --no_autoinline --inlinemax=0
+//ALWAYS_BUILD_AS_ARM
+
+LANG          SC
+
+SOURCEPATH ..\src
+
+// Scenetone application
+SOURCE scenetone.cpp scenetoneapplication.cpp scenetoneappui.cpp scenetoneappview.cpp
+SOURCE scenetonedocument.cpp scenetonesound.cpp scenetone3d.cpp
+SOURCE settingsutil.cpp
+
+SOURCEPATH        ..\data
+START RESOURCE    scenetone.rss
+HEADER
+TARGETPATH resource\apps
+END //RESOURCE
+
+START RESOURCE    scenetone_reg.rss
+TARGETPATH 	  \private\10003a3f\apps
+END //RESOURCE
+
+USERINCLUDE       ..\inc ..\scenetone_sid\inc ..\scenetone_mikmod\inc ..\scenetone_wav\inc
+SYSTEMINCLUDE     ..\inc ..\scenetone_sid\inc ..\scenetone_mikmod\inc ..\scenetone_wav\inc
+
+#if defined(SCENETONE_INCLUDE_SHINE)
+USERINCLUDE	  ..\scenetone_shine\inc
+SYSTEMINCLUDE	  ..\scenetone_shine\inc
+#endif
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE     \epoc32\include\libc
+SYSTEMINCLUDE     \epoc32\include\mmf\plugin
+SYSTEMINCLUDE     \epoc32\include\ecom
+
+LIBRARY estlib.lib efsrv.lib estor.lib euser.lib apparc.lib cone.lib eikcore.lib
+LIBRARY avkon.lib commonengine.lib mediaclientaudiostream.lib commondialogs.lib
+LIBRARY charconv.lib eikctl.lib eikcoctl.lib egul.lib aknnotify.lib eikcdlg.lib
+LIBRARY fbscli.lib bafl.lib ws32.lib platformenv.lib 
+
+#if defined(SCENETONE_INCLUDE_VISUALIZER)
+LIBRARY libgles_cm.lib 
+#endif
+
+STATICLIBRARY scenetonesid.lib
+STATICLIBRARY scenetonemikmod.lib
+
+#if defined(SCENETONE_INCLUDE_SHINE)
+STATICLIBRARY scenetoneshine.lib
+#else
+STATICLIBRARY scenetonewav.lib
+#endif

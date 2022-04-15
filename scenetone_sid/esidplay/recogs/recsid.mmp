@@ -1,0 +1,29 @@
+// recsid.mmp
+//
+// Copyright (c) 2000-2001 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License version 2 as
+//    published by the Free Software Foundation
+//
+
+/**
+ * @file recsid.mmp
+ * ER6 mime recognizer for SID-tunes (\system\recogs\recsid.mdl)
+ */
+
+TARGET        recsid.mdl
+TARGETTYPE    dll
+TARGETPATH    \System\Recogs\
+
+MACRO         __ER6__
+
+UID           0x10003A19 0x10009A99 // note: 0x10003A19 means .MDL file
+
+SOURCEPATH    ..\recogs
+SOURCE        recsid.cpp
+
+DEFFILE       recsid.def
+SYSTEMINCLUDE \epoc32\include
+
+LIBRARY       euser.lib apmime.lib

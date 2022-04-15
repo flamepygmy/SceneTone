@@ -1,0 +1,59 @@
+--- ./esidplay/libsidplay/include/6581_.h	2002-05-06 15:39:16.000000000 +0300
++++ ./esidplay_fixed/libsidplay/include/6581_.h	2006-08-05 18:59:44.531250000 +0300
+@@ -25,9 +25,9 @@
+ class sidEmu
+ 	{
+ 
+-	friend emuEngine;
+-	friend Mixer;
+-	friend Sample;
++	friend class emuEngine;
++	friend class Mixer;
++	friend class Sample;
+ 	
+   public:
+ 	sbyte waveCalcMute(struct sidOperator* pVoice);
+--- ./esidplay/libsidplay/include/emucfg.h	2002-05-06 15:39:16.000000000 +0300
++++ ./esidplay_fixed/libsidplay/include/emucfg.h	2006-08-05 18:59:45.156250000 +0300
+@@ -263,7 +263,7 @@
+ 	// Use this function together with a valid sidTune-object to fill
+ 	// a buffer with calculated sample data.
+ 
+-	friend sidEmu; // the whole 6581 class is a good friend.
++	friend class sidEmu; // the whole 6581 class is a good friend.
+ 
+ 	// See ``sidtune.h'' for info on these.
+ //	friend bool sidEmuInitializeSong(emuEngine &, sidTune &, uword songNum);
+--- ./esidplay/libsidplay/emu/envelope.h	2002-05-06 15:39:16.000000000 +0300
++++ ./esidplay_fixed/libsidplay/emu/envelope.h	2006-08-05 18:59:42.953125000 +0300
+@@ -37,7 +37,7 @@
+ class Envelope
+ #endif
+ 	{
+-	friend sidEmu;
++	friend class sidEmu;
+ 	
+   public:    // methods
+ 	Envelope();
+--- ./esidplay/libsidplay/include/mixing.h	2002-05-06 15:39:16.000000000 +0300
++++ ./esidplay_fixed/libsidplay/include/mixing.h	2006-08-05 18:59:45.171875000 +0300
+@@ -24,7 +24,7 @@
+ class Mixer// : public sidEmuBase
+ 	{
+ 
+-	friend emuEngine;
++	friend class emuEngine;
+ 	
+   public:
+ 	Mixer(emuEngine* aEmuEngine, sidEmu* aSidEmu);
+--- ./esidplay/libsidplay/emu/samples.h	2002-05-06 15:39:16.000000000 +0300
++++ ./esidplay_fixed/libsidplay/emu/samples.h	2006-08-05 18:59:42.984375000 +0300
+@@ -59,7 +59,7 @@
+ class Sample
+ 	{
+ 
+-	friend Mixer;
++	friend class Mixer;
+ 	
+ enum
+ {

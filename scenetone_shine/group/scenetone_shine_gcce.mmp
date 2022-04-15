@@ -1,0 +1,37 @@
+TARGET        scenetoneshine.lib
+TARGETTYPE    lib
+UID           0x0 0x8000525F
+
+//SECUREID      0x8000525F
+//VENDORID      0
+
+//COMPRESSTARGET
+
+//EPOCHEAPSIZE  100000 500000
+//EPOCSTACKSIZE 100000
+//CAPABILITY    NONE
+
+ALWAYS_BUILD_AS_ARM
+OPTION GCCE   -O3 --fast-math
+
+LANG          SC
+
+MACRO         SHINE_SILENT_MODE
+
+// Symbian main
+SOURCEPATH ..\src
+SOURCE shine_symbian.cpp
+
+// Modified version of shine ARM version
+SOURCEPATH ..\shine_arm
+
+SOURCE arm_muls.s
+SOURCE L3SubBand.c L3bitstrea.c L3loop.c L3mdct.c Layer3.c bitstream.c formatbits.c huffman.c reservoir.c tables.c
+
+USERINCLUDE       ..\shine_arm ..\..\inc ..\inc
+
+SYSTEMINCLUDE     ..\shine_arm ..\..\inc ..\inc
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE     \epoc32\include\libc
+
+//LIBRARY estlib.lib efsrv.lib estor.lib euser.lib charconv.lib

@@ -1,0 +1,36 @@
+// esidplay.mmp
+// 
+// (c) 1999-2002 Alfred E. Heggestad
+// 
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+ 
+/**
+ * @file esidplay.mmp
+ *
+ * top level project file for the SID player for Epoc32 (ESidPlay.exe)
+ */
+
+TARGET        esidplay.exe
+TARGETTYPE    exe
+
+MACRO         __ER6__
+ 
+SOURCEPATH    ..\
+
+SOURCE        console\esidplay.cpp
+SOURCE        console\audiodrv_er6.cpp
+SOURCE        libsidplay\elog.cpp // for file logging
+
+USERINCLUDE   ..\console
+USERINCLUDE   ..\libsidplay\include
+USERINCLUDE   ..\libsidplay\emu
+SYSTEMINCLUDE \epoc32\include 
+SYSTEMINCLUDE \epoc32\include\libc
+
+LIBRARY       euser.lib estlib.lib libsidplay.lib //audiodrv.lib
+LIBRARY       efsrv.lib // for file logging
+LIBRARY       mediaclientaudiostream.lib                  // Media Surfer

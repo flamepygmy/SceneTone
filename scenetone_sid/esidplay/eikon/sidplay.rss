@@ -1,0 +1,187 @@
+// sidplay.rss
+//
+// Copyright (c) 2000-2002 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+
+/**
+ * @file sidplay.rss
+ *
+ * Resource file for the EIKON gui (ER6 only)
+ */
+
+NAME SIDP
+
+// common
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <eikcore.rsg>
+#include "sidplay.hrh"
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=""; }
+
+
+RESOURCE EIK_APP_INFO
+	{
+	menubar  = r_sidplay_menubar;
+	hotkeys  = r_sidplay_hotkeys;
+	cba      = r_sidplay_cba;
+	}
+
+#include "sidplay.rsh"
+
+
+/**
+ * Crystal UI - Command Button Array
+ */
+RESOURCE CBA r_sidplay_cba
+	{
+	buttons=
+		{
+		CBA_BUTTON {id=ECmdPrev;    txt="prev";},
+		CBA_BUTTON {id=ECmdNext;    txt="next";},
+		CBA_BUTTON {id=ECmdPlay;    txt="play";},
+		CBA_BUTTON {id=EEikCmdExit; txt="close";}
+		};
+	}
+
+
+/**
+ * Dialog Box: Emulation
+ */
+RESOURCE DIALOG r_sidplay_dialog_focus
+	{
+	title="Emulation";
+	pages=r_tdlg_page_focus;
+	flags=EEikDialogFlagButtonsBelow;
+	buttons=r_tdlg_buttons_focus;
+	}
+
+RESOURCE ARRAY r_tdlg_page_focus
+	{
+	items=
+		{
+		PAGE { text="General settings"; id=ESidPlayDlgFocusGeneral;  lines=r_sidplay_dialog_general_lines; },
+		PAGE { text="MPU memory mode";  id=ESidPlayDlgFocusMPUmem;   lines=r_sidplay_dialog_mpumemmode_lines; },
+		PAGE { text="C64 clock speed";  id=ESidPlayDlgFocusC64clock; lines=r_sidplay_dialog_c64clock_lines; }
+		};
+	}
+
+
+/**
+ * general settings
+ */
+RESOURCE ARRAY r_sidplay_dialog_general_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="SID filters";
+            id=ESidPlayDlgGeneralSidfilters;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="Measured volumes";
+            id=ESidPlayDlgGeneralMeasVolume;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="MOS 8580 waveforms";
+            id=ESidPlayDlgGeneralMOS8580wave;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="Force song speed";
+            id=ESidPlayDlgGeneralForceSongSpeed;
+			}
+
+		};
+	}
+
+
+/**
+ * MPU memory mode
+ */
+
+/// choices for MPU memory mode
+RESOURCE ARRAY r_sidplay_dialog_mpumemmodetype
+	{
+	items=
+		{
+		LBUF { txt="Full bank-switching"; },
+		LBUF { txt="Transparent ROM"; },
+		LBUF { txt="PlaySID environment"; },
+		LBUF { txt=""; }
+		};
+	}
+
+RESOURCE ARRAY r_sidplay_dialog_mpumemmode_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtChoiceList;
+            prompt="Mode";
+            id=ESidPlayDlgMPUMemMode;
+            control=CHOICELIST
+                {
+                array_id=r_sidplay_dialog_mpumemmodetype;
+                };
+			}
+		};
+	}
+
+
+/**
+ * C64 clock speed
+ */
+
+/// choices for C64 clock speed
+RESOURCE ARRAY r_sidplay_dialog_c64clockspeed
+	{
+	items=
+		{
+		LBUF { txt="PAL"; },
+		LBUF { txt="NTSC"; },
+		LBUF { txt=""; }
+		};
+	}
+
+RESOURCE ARRAY r_sidplay_dialog_c64clock_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtChoiceList;
+            prompt="Type";
+            id=ESidPlayDlgC64clock;
+            control=CHOICELIST
+                {
+                array_id=r_sidplay_dialog_c64clockspeed;
+                };
+			}
+		};
+	}
+
+
+RESOURCE DLG_BUTTONS r_tdlg_buttons_focus
+    {
+    buttons=
+        {
+        DLG_BUTTON { id=EEikBidCancel; button=CMBUT {txt="Cancel";}; hotkey=EEikBidCancel; flags=0; },
+        DLG_BUTTON { id=EEikBidOk; button=CMBUT {txt="OK";}; hotkey=EEikBidOk; flags=0; }
+        };
+    }

@@ -1,0 +1,85 @@
+/**
+ * @file libsidplay_er5.mmp Top level project file for the SID player library for Epoc32 Release 5 (libsidplay.dll)
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ * 
+ */
+
+
+//
+// uncomment this if you want to compile the SID player
+// library as one EXE file instead of a DLL file.
+//
+//#define RUN_AS_EXE
+ 
+#if defined(RUN_AS_EXE)	
+TARGET        libsidplay.exe
+TARGETTYPE    exe
+UID           0 0
+UNICODEUID    0 0
+#else
+TARGET        libsidplay.dll
+TARGETTYPE    dll
+UID           0x1000008d 0x10009a94 // note: 0x1000008d means .DLL
+UNICODEUID    0x1000008d 0x10009a95
+#endif
+ 
+PROJECT       esidplay
+ 
+SUBPROJECT    group
+DOCUMENT      libsidplay.mmp
+
+SUBPROJECT    libsidplay
+SOURCE        eeconfig.cpp
+SOURCE        player.cpp
+SOURCE        sidtune.cpp
+SOURCE        elog.cpp
+
+SUBPROJECT    libsidplay\emu
+SOURCE        6510_.cpp 
+SOURCE        6581_.cpp
+SOURCE        envelope.cpp 
+SOURCE        mixing.cpp 
+SOURCE        samples.cpp
+		
+SUBPROJECT    libsidplay\fformat
+SOURCE        fformat_.cpp 
+SOURCE        info_.cpp 
+SOURCE        mus_.cpp 
+//SOURCE        pp_.cpp //TODO - use?
+SOURCE        psid_.cpp
+SOURCE        sid_.cpp
+
+#if defined(RUN_AS_EXE)	
+SUBPROJECT    console	   // only for .EXE version
+SOURCE        esidplay.cpp
+SOURCE        audiodrv_epoc.cpp
+SOURCE        alaw.cpp
+USERINCLUDE   \sidplay\console
+
+// to map E32Main to main() 
+#if defined(MARM)
+//LIBRARY	      ecrt0.o
+#else
+//LIBRARY	      ecrt0.obj
+#endif
+
+#else // not RUN_AS_EXE
+SUBPROJECT    libsidplay
+SOURCE        epocdll.cpp
+#endif
+
+
+USERINCLUDE   \esidplay\libsidplay
+USERINCLUDE   \esidplay\libsidplay\emu
+USERINCLUDE   \esidplay\libsidplay\include
+SYSTEMINCLUDE \epoc32\include 
+SYSTEMINCLUDE \epoc32\include\libc
+ 
+LIBRARY       euser.lib estlib.lib efsrv.lib
+
+EPOCSTACKSIZE 65536 /// @todo - reduce

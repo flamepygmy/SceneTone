@@ -1,0 +1,95 @@
+// sidplay.rrh
+//
+// Copyright (c) 2000-2002 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+
+/**
+ * @file sidplay.hrh
+ *
+ * Resource header file for the EIKON gui
+ */
+
+
+enum TSidplayCommands
+	{
+	ECmdFileName = 100,
+	ECmdPrev,  // Z
+	ECmdPlay,  // X
+	ECmdPause, // C
+	ECmdStop,  // V
+	ECmdNext,  // B
+//
+//	ECmdConfigAudio = 105, // reserver for the future
+	ECmdConfigEmulator = 106,
+	ECmdConfigSidFilter = 107,
+	ECmdConfigHVSCinfo = 108,
+//
+	ECmdExtraSTILview = 109,
+	ECmdExtraHistory = 110,
+	ECmdExtraMixer = 111,
+	ECmdExtraScope = 112,
+//
+	ECmdAboutSidPlay = 113,
+	ECmdAboutSidTune = 114,
+	ECmdAboutAudio = 115,
+
+	ECmdWavDump = 116,
+
+	ECmdFile,
+	ECmdAbout,
+
+// --------------
+	ECmdLastDummy
+	};
+
+
+//
+// Dialog Box: Emulation
+//
+
+enum TFocusDlgItemId
+{
+	// General
+	ESidPlayDlgGeneralSidfilters,
+	ESidPlayDlgGeneralMeasVolume,
+	ESidPlayDlgGeneralMOS8580wave,
+	ESidPlayDlgGeneralForceSongSpeed,
+
+	// MPU mem mode
+	ESidPlayDlgMPUMemMode,
+
+	// C64 clock speed
+	ESidPlayDlgC64clock
+
+};
+
+enum TFocusDlgPageId
+{
+	ESidPlayDlgFocusGeneral = 1,
+	ESidPlayDlgFocusMPUmem,
+	ESidPlayDlgFocusC64clock
+};
+
+
+/**
+ * For Series 60 platform
+ */
+enum TSidPlayTabViewId
+    {
+    ESidPlayView1Tab= 1,
+    ESidPlayView2Tab
+    };
+
+
+enum TSidplayNoteControlIds
+    {
+    ESidplayCtrlIdAboutNote = 0x100
+    };
+
+
+// EOF - SIDPLAY.HRH

@@ -1,0 +1,48 @@
+;
+; SidPlay installation file for ER6 and beyond
+;
+;  (c) 2000-2002 Alfred E. Heggestad
+;
+;    This program is free software; you can redistribute it and/or modify
+;    it under the terms of the GNU General Public License as published by
+;    the Free Software Foundation; either version 2 of the License, or
+;    (at your option) any later version.
+;
+
+; Languages
+; none -  English only by default
+
+; Installation header
+#{"SidPlay"},(0x10009a97),0,14,0
+
+; Only two files to install for the minimal application
+"\epoc32\release\armi\urel\sidplay.app"    -"!:\system\apps\sidplay\sidplay.app"
+"\epoc32\release\armi\urel\sidplay.rsc"    -"!:\system\apps\sidplay\sidplay.rsc"
+"\epoc32\release\armi\urel\esidplay.exe"   -"!:\system\apps\sidplay\esidplay.exe"
+"\epoc32\release\armi\urel\libsidplay.dll" -"!:\system\apps\sidplay\libsidplay.dll"
+"\epoc32\release\armi\urel\sidplay.aif"    -"!:\system\apps\sidplay\sidplay.aif"
+"..\icon\e32frodo.mbm"                     -"!:\system\apps\sidplay\e32frodo.mbm"
+
+;
+; Recognizer files
+;
+"\epoc32\release\armi\urel\recsidfile.rdl"-"!:\system\recogs\recsidfile.rdl"
+"\epoc32\release\armi\urel\recsid.mdl"-"!:\system\recogs\recsid.mdl"
+
+;
+; Streaming sound drivers
+;
+"\epoc32\release\armi\urel\mediaclientaudiostream.dll"-"!:\system\libs\mediaclientaudiostream.dll"
+"\epoc32\release\armi\urel\audiostreambackport.mda"-"!:\system\media\audiostreambackport.mda"
+"\epoc32\release\armi\urel\audiostreambackport.rsc"-"!:\system\media\audiostreambackport.rsc"
+
+;
+; Data Files
+;
+"..\docs\commando.sid"-"c:\sid\commando.sid"
+"..\docs\gameover.sid"-"c:\sid\gameover.sid"
+"..\docs\savage.sid"-"c:\sid\savage.sid"
+
+; Component .sis files
+; None
+;@"\epoc32\release\armi\urel\stdlib.sis",(0x100002c3)

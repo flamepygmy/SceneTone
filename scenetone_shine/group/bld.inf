@@ -1,0 +1,14 @@
+// BLD.INF
+// Component description file 
+//
+
+PRJ_PLATFORMS
+GCCE ARMV5 WINSCW
+
+PRJ_MMPFILES
+
+#if defined(GCCE)
+Scenetone_shine_gcce.mmp
+#else
+Scenetone_shine.mmp
+#endif

@@ -1,0 +1,12 @@
+EXPORTS
+	??0emuEngine@@QAE@XZ @ 1 NONAME ; public: __thiscall emuEngine::emuEngine(void)
+	??0sidTune@@QAE@PBD@Z @ 2 NONAME ; public: __thiscall sidTune::sidTune(char const *)
+	?FillBuffer@emuEngine@@QAEXAAVsidTune@@PAXK@Z @ 3 NONAME ; public: void __thiscall emuEngine::FillBuffer(class sidTune &,void *,unsigned long)
+	?getConfig@emuEngine@@QAEXAAUemuConfig@@@Z @ 4 NONAME ; public: void __thiscall emuEngine::getConfig(struct emuConfig &)
+	?getInfo@sidTune@@QAEXAAUsidTuneInfo@@@Z @ 5 NONAME ; public: void __thiscall sidTune::getInfo(struct sidTuneInfo &)
+	?setConfig@emuEngine@@QAE_NAAUemuConfig@@@Z @ 6 NONAME ; public: bool __thiscall emuEngine::setConfig(struct emuConfig &)
+	?sidEmuInitializeSong@@YA_NAAVemuEngine@@AAVsidTune@@G@Z @ 7 NONAME ; bool __cdecl sidEmuInitializeSong(class emuEngine &,class sidTune &,unsigned short)
+	?verifyEndianess@emuEngine@@QAE_NXZ @ 8 NONAME ; public: bool __thiscall emuEngine::verifyEndianess(void)
+	?getSecondsThisSong@emuEngine@@QAEHXZ @ 9 NONAME ; public: int __thiscall emuEngine::getSecondsThisSong(void)
+	?getSecondsTotal@emuEngine@@QAEHXZ @ 10 NONAME ; public: int __thiscall emuEngine::getSecondsTotal(void)
+

@@ -1,0 +1,48 @@
+;  ---------------------------------------------------------------------------
+;  This file is part of Scenetone, a music player aimed for playing old
+; music tracker modules and C64 tunes.
+;
+;  Copyright (C) 2006  Jani Vaarala <flame@pygmyprojects.com>
+;
+;  This program is free software; you can redistribute it and/or modify
+;  it under the terms of the GNU General Public License as published by
+;  the Free Software Foundation; either version 2 of the License, or
+;  (at your option) any later version.
+;
+;  This program is distributed in the hope that it will be useful,
+;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;  GNU General Public License for more details.
+;
+;  You should have received a copy of the GNU General Public License
+;  along with this program; if not, write to the Free Software
+;  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+;  --------------------------------------------------------------------------
+
+
+;Language - standard language definitions
+&EN
+
+; standard SIS file header
+#{"Scenetone"},(0xA0001186),0,11,0
+
+;Localised Vendor name
+%{"Pygmy-EN"}
+
+;Unique Vendor name
+:"Pygmy"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+*"newpygmykey.key","newpygmykey.cer",KEY=""
+
+
+;Files to install
+
+"../../epoc32/release/gcce/urel/scenetone.exe"                  	 -"!:\sys\bin\scenetone.exe"
+"../../epoc32/data/z/resource/apps/scenetone.rsc"                	 -"!:\resource\apps\scenetone.rsc"
+"../../epoc32/data/z/private/10003a3f/apps/scenetone_reg.rsc"      -"!:\private\10003a3f\import\apps\scenetone_reg.rsc"
+"../../epoc32/data/z/resource/apps/scenetone_icon.mif"             -"!:\resource\apps\scenetone_icon.mif"
+"../data/settings.bin" 				              -"!:\private\a0001186\settings.bin"
+

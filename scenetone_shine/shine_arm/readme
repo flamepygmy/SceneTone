@@ -1,0 +1,15 @@
+Shine (RISC OS fixed point port)
+
+This port of Gabriel Bouvigne's Shine has been converted to fixed point
+to reduce encoding time on Acorn/RISC OS computers without hardware
+floating point coprocessors.
+
+For use on other platforms, the RISC OS specifics in main.c should be
+undefined, and the assembler fractional multiply functions will need to
+be changed. Big endian support may also have to be re-instated.
+
+Pete Everett. 9/4/01
+
+email: peter@everett9981.freeserve.co.uk
+web: http://www.everett9981.freeserve.co.uk
+

@@ -1,0 +1,49 @@
+/**
+ * @file sidplay_er5.mmp Top level project file for the EIKON SidPlay frontend libsidplay for Epoc32 (ER5 only)
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+ 
+TARGET        sidplay.app
+TARGETTYPE    app
+UID           0x1000006c 0x10009a96 // note: 0x1000006c means .APP
+UNICODEUID    0x100039ce 0x10009a97
+TARGETPATH    \system\apps\sidplay
+ 
+PROJECT       esidplay
+ 
+SUBPROJECT    group
+DOCUMENT      sidplay.mmp
+
+SUBPROJECT    er5
+RESOURCE      sidplay.rss
+LANG          SC
+
+SUBPROJECT    eikon
+SOURCE        sidplayeik.cpp
+SOURCE        sidplay_view.cpp
+SOURCE        sidplayer.cpp
+
+SUBPROJECT    console
+SOURCE        audiodrv_epoc.cpp
+SOURCE        alaw.cpp
+
+SUBPROJECT    libsidplay
+SOURCE        elog.cpp
+
+USERINCLUDE   \esidplay\libsidplay\include
+USERINCLUDE   \esidplay\libsidplay
+USERINCLUDE   \esidplay\libsidplay\emu
+USERINCLUDE   \esidplay\console
+USERINCLUDE   \esidplay\eikon
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+ 
+LIBRARY       euser.lib efsrv.lib                    // core
+LIBRARY       apparc.lib bafl.lib cone.lib eikon.lib // UI stuff
+LIBRARY       libsidplay.lib                         // engine
+LIBRARY       gdi.lib

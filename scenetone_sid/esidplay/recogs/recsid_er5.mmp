@@ -1,0 +1,26 @@
+/**
+ * @file recsid_er5.mmp ER5 mime recognizer for SID-tunes (\system\recogs\recsid.mdl)
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+
+TARGET        recsid.mdl
+TARGETTYPE    dll
+TARGETPATH    \system\recogs\
+
+UID           0x10000c07 0x10009a98 // note: 0x10000c07 means .MDL file
+UNICODEUID    0x10003a19 0x10009a99
+
+PROJECT       esidplay
+SUBPROJECT    recogs
+
+DOCUMENT      recsid.mmp
+SOURCE        recsid.cpp
+
+SYSTEMINCLUDE \epoc32\include
+
+LIBRARY       euser.lib apmime.lib

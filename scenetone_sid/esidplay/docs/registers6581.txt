@@ -1,0 +1,38 @@
+registers in 6518
+
+Voice 1-2-3:
+
+$D400 - $D401 freq
+$D402 - $D403 pulse width
+$D404         SID control / new wave
+$D405         AD temp
+$D406         SR temp
+
+
+~~~~~~~~~
+
+$D400 - $D41C (28 bytes)
+
+$D400 voice 1
+$D407 voice 2
+$D40E voice 3
+
+$D415 filter value ?
+$D416 filter value ?
+
+$D418 master volume (bitmask 0x0f?)
+$D418 filter type (bitmask 0x70?)
+
+$D41D first sample channel
+$D41E address
+
+$D43D sam len
+$D43E sam addr
+
+$D43F loop wait
+$D45D null wait / sample frequency-shifting register 
+
+$D51D Second digi channel (real samples only) at
++++++
+
+

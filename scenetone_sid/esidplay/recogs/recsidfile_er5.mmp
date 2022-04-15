@@ -1,0 +1,26 @@
+/**
+ * @file recsidfile_er5.mmp ER3 .SID file recognizer (\system\recogs\recsidfile.rdl)
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+
+TARGET        recsidfile.rdl
+TARGETTYPE    dll
+TARGETPATH    \system\recogs\
+
+UID           0x1000013e 0x10009a9a // note: 0x1000013e means .RDL file
+UNICODEUID    0x10003a37 0x10009a9b
+
+PROJECT       esidplay
+SUBPROJECT    recogs
+
+DOCUMENT      recsidfile.mmp
+SOURCE        recsidfile.cpp
+
+SYSTEMINCLUDE \epoc32\include
+
+LIBRARY       euser.lib efsrv.lib apparc.lib

@@ -1,0 +1,29 @@
+/**
+ * @file sidplay_aif.rss Resource file for sidplay.aif Application Information File
+ *
+ * (C) 2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+
+#include <aiftool.rh>
+
+RESOURCE AIF_DATA
+	{
+#if defined (_UNICODE)
+	app_uid=0x10009a97;
+#else
+	app_uid=0x10009a96;
+#endif // _UNICODE
+
+	caption_list=
+		{
+		CAPTION { code=ELangEnglish; caption="Sidplay"; }
+		};
+	num_icons = 4;
+	embeddability = KAppNotEmbeddable;
+	hidden = KAppNotHidden;
+	newfile = KAppDoesNotSupportNewFile;
+	}

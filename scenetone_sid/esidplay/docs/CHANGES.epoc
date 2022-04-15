@@ -1,0 +1,39 @@
+CHANGES to the EPOC version of SidPlay
+=====================================
+
+
+-------------------------------------------------------------------------------------
+0.14   5. July 2002 (alfredh)
+
+    o Using new streaming audio API for the Nokia 9210
+    o Early port to Series 60 SDK, only compilation
+    o Changed attributes for *.sid files to binary. This was done with 'cvs admin -kb *.sid'
+    o Fixed a nasty bug in 6510_.cpp (no sound syndrome)
+    o Ported parts of it to ER6
+    o Removed some warnings
+    o Some fixes in logging macros
+    o Some cleanup in the code
+    o Renamed all .mmp files for ER5 to xxx_er6.mmp
+
+
+-------------------------------------------------------------------------------------
+0.13  29. July 2001 (alfredh)
+
+    o Added .pkg file for SIS file generation
+    o Also new Eikon application
+    o Various bug fixing
+
+
+-------------------------------------------------------------------------------------
+0.12  4. Febrary 2001 (alfredh)
+
+    o Fixed the gnupoc toolchain to handle import/exports in DLLs, so
+      now it is esidplay.exe statically linked to libsidplay.dll.
+    o Fixed some minor bugs due to problems with Zerofilling of member
+      variables from CBase
+    o Some ActiveObjects fikling.
+
+
+-------------------------------------------------------------------------------------
+0.11  ? (don't remember...) ?
+

@@ -1,0 +1,364 @@
+// sidplay.rss
+//
+// Copyright (c) 2000-2002 Alfred E. Heggestad
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+
+/**
+ * @file sidplay.rss
+ *
+ * Resource file for the EIKON gui (ER6 only)
+ */
+
+NAME SIDP
+
+// common
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <eikcore.rsg>
+#include "sidplay.hrh"
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=""; }
+
+RESOURCE EIK_APP_INFO
+	{
+	menubar  = r_sidplay_menubar;
+	hotkeys  = r_sidplay_hotkeys;
+	toolbar  = r_sidplay_toolbar;
+	toolband = r_sidplay_toolband;
+	}
+
+
+/**
+ * Hotkeys
+ */
+RESOURCE HOTKEYS r_sidplay_hotkeys
+	{
+	plain =
+	{
+		//
+		// keymappings inspired by Xmms/WinAmp
+		//
+		// L Load tune (open tray)
+		// Z Previous tune
+		// X Play
+		// C Pause
+		// V Stop
+		// B Next tune
+		//
+		HOTKEY { command=EEikCmdFileOpen;  key='L'; },
+		HOTKEY { command=ECmdPrev;         key='Z'; },
+		HOTKEY { command=ECmdPlay;         key='X'; },
+		HOTKEY { command=ECmdPause;        key='C'; },
+		HOTKEY { command=ECmdStop;         key='V'; },
+		HOTKEY { command=ECmdNext;         key='B'; }
+	};
+	control =
+	{
+		HOTKEY { command=EEikCmdFileOpen;        key='o'; },
+		HOTKEY { command=EEikCmdExit;            key='e'; }
+	};
+	shift_control =
+	{
+		HOTKEY { command=EEikCmdHelpAbout;       key='a'; }
+	};
+	}
+
+
+/**
+ * Toolbar
+ */
+RESOURCE TOOLBAR r_sidplay_toolbar
+	{
+	breadth=KEikStdToolBarWidth;
+    controls=
+		{
+		TBAR_CTRL 
+			{ 
+			id=ECmdFileName;
+			type=EEikCtFileNameLabel; 
+			flags=EEikToolBarCtrlHasSetMinLength;
+			length=KEikStdFileNameLabelHeight;
+			},
+		TBAR_BUTTON
+			{
+			id=ECmdPrev;
+			txt="prev";
+			flags=EEikToolBarCtrlHasSetMinLength;
+			length=KEikStdToolBarButtonHeight;
+			},
+		TBAR_BUTTON
+			{
+			id=ECmdNext;
+			txt="next";
+			flags=EEikToolBarCtrlHasSetMinLength;
+			length=KEikStdToolBarButtonHeight;
+			},
+		TBAR_BUTTON
+			{
+			id=ECmdPlay;
+			txt="play";
+			flags=EEikToolBarCtrlHasSetMinLength;
+			length=KEikStdToolBarButtonHeight;
+			},
+		TBAR_BUTTON
+			{
+			id=ECmdStop;
+			txt="stop";
+			flags=EEikToolBarCtrlHasSetMinLength;
+			length=KEikStdToolBarButtonHeight;
+			},
+		TBAR_CTRL
+			{
+			type=EEikCtSpacer;
+			flags=EEikToolBarCtrlHasSetMinLength|EEikToolBarCtrlIsStretchable;
+			length=0;
+			control=SPACER;
+			}
+		};
+    }
+
+
+/**
+ * Toolband
+ */
+RESOURCE TOOLBAND r_sidplay_toolband
+	{
+	breadth=KEikStdToolBandHeight;
+	flags=EEikToolBarHorizontal;
+	controls=
+	  {
+		  TBAR_BUTTON
+		  {
+			  id = ECmdPrev;
+			  flags = EEikToolBarCtrlHasSetMinLength;
+			  length = EEikStdTwoStateIconicToolBandButtonWidth;
+			  txt="'"; // ESymFontScrollToLeftEnd
+		  },
+		  TBAR_BUTTON
+		  {
+			  id = ECmdPlay;
+			  flags = EEikToolBarCtrlHasSetMinLength;
+			  length = EEikStdTwoStateIconicToolBandButtonWidth;
+			  txt="\""; // ESymFontScrollRight
+		  },
+		  TBAR_BUTTON
+		  {
+			  id = ECmdPause;
+			  flags = EEikToolBarCtrlHasSetMinLength;
+			  length = EEikStdTwoStateIconicToolBandButtonWidth;
+			  txt="pause";
+		  },
+		  TBAR_BUTTON
+		  {
+			  id = ECmdStop;
+			  flags = EEikToolBarCtrlHasSetMinLength;
+			  length = EEikStdTwoStateIconicToolBandButtonWidth;
+			  txt="stop";
+		  },
+		  TBAR_BUTTON
+		  {
+			  id = ECmdNext;
+			  flags = EEikToolBarCtrlHasSetMinLength;
+			  length = EEikStdTwoStateIconicToolBandButtonWidth;
+			  txt="&"; // ESymFontScrollToRightEnd
+		  }
+	  };
+	
+	}
+
+
+/**
+ * Menu
+ */
+RESOURCE MENU_BAR r_sidplay_menubar
+    {
+    titles=
+	{
+        MENU_TITLE { menu_pane=r_sidplay_file_menu;   txt="File"; },
+        MENU_TITLE { menu_pane=r_sidplay_config_menu; txt="Config"; },
+        MENU_TITLE { menu_pane=r_sidplay_extra_menu;  txt="Extra"; },
+        MENU_TITLE { menu_pane=r_sidplay_about_menu;  txt="About"; }
+	};
+    }
+
+RESOURCE MENU_PANE r_sidplay_file_menu
+	{
+	items=
+	{
+		MENU_ITEM { command=EEikCmdFileOpen; txt="Open"; },
+		MENU_ITEM { command=EEikCmdExit;     txt="Exit"; }
+	};
+    }
+
+RESOURCE MENU_PANE r_sidplay_config_menu
+	{
+	items=
+	{
+//		MENU_ITEM { command=ECmdConfigAudio;     txt="Audio"; },  -- Not applicable for ER5
+		MENU_ITEM { command=ECmdConfigEmulator;  txt="Emulator"; },
+		MENU_ITEM { command=ECmdConfigSidFilter; txt="SID filter"; },
+		MENU_ITEM { command=ECmdConfigHVSCinfo;  txt="HVSC info"; }
+	};
+    }
+
+RESOURCE MENU_PANE r_sidplay_extra_menu
+	{
+	items=
+	{
+		MENU_ITEM { command=ECmdExtraSTILview; txt="STIL view"; },
+		MENU_ITEM { command=ECmdExtraHistory;  txt="History"; },
+		MENU_ITEM { command=ECmdExtraMixer;    txt="Mixer"; },
+		MENU_ITEM { command=ECmdExtraScope;    txt="Oscilloscope"; }
+	};
+    }
+
+RESOURCE MENU_PANE r_sidplay_about_menu
+	{
+	items=
+		{
+		MENU_ITEM { command=ECmdAboutSidPlay;    txt="SidPlay"; }
+        };
+    }
+
+
+/**
+ * Dialog Box: Emulation
+ */
+RESOURCE DIALOG r_sidplay_dialog_focus
+	{
+	title="Emulation";
+	pages=r_tdlg_page_focus;
+	flags=EEikDialogFlagButtonsBelow;
+	buttons=r_tdlg_buttons_focus;
+	}
+
+RESOURCE ARRAY r_tdlg_page_focus
+	{
+	items=
+		{
+		PAGE { text="General settings"; id=ESidPlayDlgFocusGeneral;  lines=r_sidplay_dialog_general_lines; },
+		PAGE { text="MPU memory mode";  id=ESidPlayDlgFocusMPUmem;   lines=r_sidplay_dialog_mpumemmode_lines; },
+		PAGE { text="C64 clock speed";  id=ESidPlayDlgFocusC64clock; lines=r_sidplay_dialog_c64clock_lines; }
+		};
+	}
+
+
+/**
+ * general settings
+ */
+RESOURCE ARRAY r_sidplay_dialog_general_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="SID filters";
+            id=ESidPlayDlgGeneralSidfilters;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="Measured volumes";
+            id=ESidPlayDlgGeneralMeasVolume;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="MOS 8580 waveforms";
+            id=ESidPlayDlgGeneralMOS8580wave;
+			},
+		DLG_LINE
+			{
+            type=EEikCtCheckBox;
+            prompt="Force song speed";
+            id=ESidPlayDlgGeneralForceSongSpeed;
+			}
+
+		};
+	}
+
+
+/**
+ * MPU memory mode
+ */
+
+/// choices for MPU memory mode
+RESOURCE ARRAY r_sidplay_dialog_mpumemmodetype
+	{
+	items=
+		{
+		LBUF { txt="Full bank-switching"; },
+		LBUF { txt="Transparent ROM"; },
+		LBUF { txt="PlaySID environment"; },
+		LBUF { txt=""; }
+		};
+	}
+
+RESOURCE ARRAY r_sidplay_dialog_mpumemmode_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtChoiceList;
+            prompt="Mode";
+            id=ESidPlayDlgMPUMemMode;
+            control=CHOICELIST
+                {
+                array_id=r_sidplay_dialog_mpumemmodetype;
+                };
+			}
+		};
+	}
+
+
+/**
+ * C64 clock speed
+ */
+
+/// choices for C64 clock speed
+RESOURCE ARRAY r_sidplay_dialog_c64clockspeed
+	{
+	items=
+		{
+		LBUF { txt="PAL"; },
+		LBUF { txt="NTSC"; },
+		LBUF { txt=""; }
+		};
+	}
+
+RESOURCE ARRAY r_sidplay_dialog_c64clock_lines
+	{
+	items=
+		{
+		DLG_LINE
+			{
+            type=EEikCtChoiceList;
+            prompt="Type";
+            id=ESidPlayDlgC64clock;
+            control=CHOICELIST
+                {
+                array_id=r_sidplay_dialog_c64clockspeed;
+                };
+			}
+		};
+	}
+
+
+RESOURCE DLG_BUTTONS r_tdlg_buttons_focus
+    {
+    buttons=
+        {
+        DLG_BUTTON { id=EEikBidCancel; button=CMBUT {txt="Cancel";}; hotkey=EEikBidCancel; flags=0; },
+        DLG_BUTTON { id=EEikBidOk; button=CMBUT {txt="OK";}; hotkey=EEikBidOk; flags=0; }
+        };
+    }
+

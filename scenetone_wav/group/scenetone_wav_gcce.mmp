@@ -1,0 +1,53 @@
+//  ---------------------------------------------------------------------------
+//  This file is part of Scenetone, a music player aimed for playing old
+//  music tracker modules and C64 tunes.
+//
+//  Copyright (C) 2006  Jani Vaarala <flame@pygmyprojects.com>
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//  --------------------------------------------------------------------------
+
+TARGET        scenetonewav.lib
+TARGETTYPE    lib
+UID           0x0 0x8000525F
+
+//SECUREID      0x8000525F
+//VENDORID      0
+
+//COMPRESSTARGET
+
+//EPOCHEAPSIZE  100000 500000
+//EPOCSTACKSIZE 100000
+//CAPABILITY    NONE
+
+ALWAYS_BUILD_AS_ARM
+
+#ifdef GCCE
+OPTION GCCE   -O3 --fast-math
+#endif
+
+LANG          SC
+
+// Symbian main
+SOURCEPATH ..\src
+SOURCE wav_symbian.cpp
+
+USERINCLUDE       ..\..\inc ..\inc
+
+SYSTEMINCLUDE     ..\..\inc ..\inc
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE     \epoc32\include\libc
+
+//LIBRARY estlib.lib efsrv.lib estor.lib euser.lib charconv.lib

@@ -1,0 +1,131 @@
+//  ---------------------------------------------------------------------------
+//  This file is part of Scenetone, a music player aimed for playing old
+//  music tracker modules and C64 tunes.
+//
+//  Copyright (C) 2006  Jani Vaarala <flame@pygmyprojects.com>
+//
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//  --------------------------------------------------------------------------
+
+
+//  RESOURCE IDENTIFIER
+NAME SCTN    // 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include <commondialogs.rh>
+
+#include "scenetone.hrh"
+#include "scenetone.loc"
+
+RESOURCE RSS_SIGNATURE    {    }
+RESOURCE TBUF             { buf = "Scenetone"; }
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_scenetone_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+RESOURCE MENU_BAR r_scenetone_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_scenetone_menu; }
+        };
+    }
+
+RESOURCE MENU_PANE r_scenetone_menu
+    {
+    items =
+        {
+        // added the new Options menu command here
+        MENU_ITEM
+                {
+                command = EScenetoneCommand1;
+                txt = qtn_scenetone_command1;
+                },
+        MENU_ITEM
+                {
+                command = EScenetoneCommand2;
+                txt = qtn_scenetone_command2;
+                },
+        MENU_ITEM
+                {
+                command = EScenetoneCommand3;
+                txt = qtn_scenetone_command3;
+                },
+        MENU_ITEM
+                {
+                command = EScenetoneTakeCurrentFolderAsDefaultPath;
+                txt = qtn_scenetone_store_default_path;
+		},
+        MENU_ITEM
+                {
+                command = EScenetoneAbout;
+                txt = qtn_scenetone_about;
+		},
+        MENU_ITEM
+                {
+                command = EAknSoftkeyExit;
+                txt = qtn_scenetone_exit;
+                }
+        };
+    }
+
+RESOURCE TBUF32 r_scenetone_command1_text { buf=qtn_scenetone_command1_text; }
+RESOURCE TBUF32 r_scenetone_caption_string { buf=qtn_scenetone_caption_string; }
+
+RESOURCE DIALOG r_scenetone_generate_time_query
+{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items = 
+	{
+		DLG_LINE
+		{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_DATA_QUERY
+			{
+				layout = ENumberLayout;
+				label  = "Generate Time";
+				control = AVKON_INTEGER_EDWIN
+				{
+					min = 1;
+					max = 999;
+				};
+			};
+		}
+	};
+}
+
+RESOURCE LOCALISABLE_APP_INFO r_scenetone_localisable_app_info
+    {
+    short_caption = qtn_scenetone_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = qtn_scenetone_caption_string;
+
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\scenetone_icon.mif";
+       };
+    }
+
+// End of File

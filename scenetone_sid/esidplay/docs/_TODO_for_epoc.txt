@@ -1,0 +1,46 @@
+TODO list for Epoc32 port 
+of SidPlay and libraries.
+(c) Alfred E. Heggestad
+-------------------------
+
+o  Dynamic menu items
+
+o  Create aif file and icon
+
+o  Reduce the time that it takes to stop the player. This is
+   currently ~1 second and should be closer to 1 ms.
+   -> Done by calling ->Stop() on media player for 9210
+
+o  apply GPL to all source files
+
+o  improve initialisation sequence, generation of tables etc.
+   this is too slow (5 seconds) and not acceptable. It is probably
+   fast enough on PIII 450 MHz but with 33MHz ARM we have to optimise
+   a bit. -> Optimized a bit by turning on -O2 -unroll-loops flags for GCC
+
+o  fix problem with 'un-tuned' tones. When playing songs like 'Last Ninja
+   loader intro' you can clearly hear that one of the tones is getting
+   higher and higher (in frequency) as they last. Maybe something is out 
+   of sync. Run LINT on the code to spot potential bugs.
+   -> This is not a problem on Nokia 9210
+
+o  check for illegal leaves in sidplay.cpp
+   the library is pure ANSI C code and cannot leave. (I guess)
+
+o  optimise on code size. 160 Kb is quite small (compared to 260Kb on i686 Linux!)
+   target should be less than 100 Kb. (and execute at same speed)
+
+o  optimise on execution speed. I could clearly hear that it had problems
+   emulating some of the most advanced Jeroen Tel songs, like Cybernoid.
+   try with Optimalisation flags (-O2 or higher) or hard-code some of the
+   inner-loops (use load/store multiple ARM instructions) and only signed
+   integers (int) for loop counting.
+   -> Few speed problems on Nokia 9210
+
+o  create a SID2WAP tool which converts sidtunes into WAP ring-tones.
+   -> Embed into sidplay.app, save as WAV file
+
+o  try out all possible Compile Switch combinations. (in compconf.h)
+
+-------------------
+

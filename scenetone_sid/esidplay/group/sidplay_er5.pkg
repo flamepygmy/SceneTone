@@ -1,0 +1,33 @@
+;
+; SidPlay installation file for ER5
+;
+;    This program is free software; you can redistribute it and/or modify
+;    it under the terms of the GNU General Public License as published by
+;    the Free Software Foundation; either version 2 of the License, or
+;    (at your option) any later version.
+;
+
+; No languages - English by default
+;
+#{"ESidPlay"},(0x10009A96),0,13,0
+
+;
+; Application Files
+;
+"\epoc32\release\marm\rel\esidplay.exe"-"!:\system\apps\sidplay\esidplay.exe"
+"\epoc32\release\marm\rel\sidplay.app"-"!:\system\apps\sidplay\sidplay.app"
+"\epoc32\release\marm\rel\libsidplay.dll"-"!:\system\apps\sidplay\libsidplay.dll"
+"\epoc32\release\marm\rel\sidplay.rsc"-"!:\system\apps\sidplay\sidplay.rsc"
+;"\epoc32\release\marm\rel\sidplay.aif"-"!:\system\apps\sidplay\sidplay.aif"
+
+;
+; Data Files
+;
+"\esidplay\docs\commando.sid"-"!:\sid\commando.sid"
+"\esidplay\docs\gameover.sid"-"!:\sid\gameover.sid"
+"\esidplay\docs\savage.sid"-"!:\sid\savage.sid"
+
+;
+; Component sis files
+;
+@"\epoc32\release\marm\rel\stdlib.sis",(0x100002c3)

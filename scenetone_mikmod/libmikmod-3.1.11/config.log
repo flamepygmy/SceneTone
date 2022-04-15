@@ -1,0 +1,31 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:772: checking for a BSD compatible install
+configure:825: checking whether build environment is sane
+configure:896: checking for mawk
+configure:926: checking whether make sets ${MAKE}
+configure:1046: checking whether to enable maintainer-specific portions of Makefiles
+configure:1211: checking for gcc
+configure:1324: checking whether the C compiler (gcc  ) works
+configure:1340: gcc -o conftest    conftest.c  1>&5
+configure:1366: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1371: checking whether we are using GNU C
+configure:1399: checking whether gcc accepts -g
+configure:1438: checking for style of include used by make
+configure:1472: checking dependency style of gcc
+configure:1539: checking how to run the C preprocessor
+configure:1630: checking for a BSD compatible install
+configure:1683: checking whether ln -s works
+configure:1715: checking for Cygwin environment
+configure:1748: checking for mingw32 environment
+configure:1852: checking host system type
+configure:1873: checking build system type
+configure:1902: checking for ld used by GCC
+configure:1970: checking if the linker (/usr/i686-pc-cygwin/bin/ld.exe) is GNU ld
+configure:1987: checking for /usr/i686-pc-cygwin/bin/ld.exe option to reload object files
+configure:1999: checking for BSD-compatible nm
+configure:2037: checking how to recognise dependant libraries
+configure:2214: checking for object suffix
+configure:2240: checking for executable suffix
+configure:2281: checking command to parse /usr/bin/nm -B output

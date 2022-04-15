@@ -1,0 +1,23 @@
+;Language - standard language definitions
+&EN
+
+; standard SIS file header
+#{"Scenetone"},(0xA0001186),0,7,0
+
+;Localised Vendor name
+%{"Pygmy-EN"}
+
+;Unique Vendor name
+:"Pygmy"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+*"pygmy.key","pygmy.cer",KEY="pygmy"
+
+
+;Files to install
+"\epoc32\release\armv5\urel\scenetone.exe"                  	 -"!:\sys\bin\Scenetone.exe"
+"\epoc32\data\z\resource\apps\scenetone.rsc"                	 -"!:\resource\apps\Scenetone.rsc"
+"\epoc32\data\z\private\10003a3f\apps\scenetone_reg.rsc"      -"!:\private\10003a3f\import\apps\Scenetone_reg.rsc"
+"\epoc32\data\z\resource\apps\scenetone_icon.mif"             -"!:\resource\apps\scenetone_icon.mif"

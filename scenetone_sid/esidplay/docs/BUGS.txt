@@ -1,0 +1,16 @@
+Known bugs in ESidPlay
+----------------------
+
+001 Stopping a playing song takes too long ( > 2 seconds) This should
+    be much lower. Perhaps it is because the sound is still in the buffer
+    in the driver ? 
+
+002 The second time you start SidPlay it will exit with 'Not Found'
+    Must reboot emulator to fix it.
+
+003 On exit, SidPlay creates some files in C:\Documents. This is wrong.
+
+004 When browsing for files, it always goes to C:\Documents first, even
+    though C:\sid is specied.
+
+

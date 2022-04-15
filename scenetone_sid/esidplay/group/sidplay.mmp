@@ -1,0 +1,86 @@
+/**
+ * @file sidplay.mmp Top level project file for the EIKON SidPlay frontend libsidplay for Epoc32
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+ 
+TARGET        sidplay.app
+TARGETTYPE    app
+
+// WINS compat
+#define CRYSTAL
+//#define SERIES60
+
+MACRO         __ER6__
+
+// temp hack for windows SDK compatibility
+#if defined(SERIES60)
+MACRO         __SERIES60__
+#elif defined(QUARTZ)
+MACRO         __QUARTZ__
+#else
+MACRO         __CRYSTAL__
+#ifndef CRYSTAL
+#define       CRYSTAL
+#endif
+#endif // __SERIES60__
+
+UID           0x100039ce 0x10009a97 // note: 0x100039ce means .APP
+TARGETPATH    \system\apps\sidplay
+ 
+SOURCEPATH    ..\
+
+#if defined(SERIES60)
+RESOURCE      s60\sidplay.rss
+#else
+RESOURCE      eikon\sidplay.rss
+#endif
+
+LANG          SC
+
+SOURCE        eikon\sidplayeik.cpp
+SOURCE        eikon\sidplay_view.cpp
+SOURCE        eikon\sidplayer.cpp
+SOURCE        console\audiodrv_er6.cpp
+SOURCE        libsidplay\elog.cpp
+
+USERINCLUDE   ..\libsidplay\include
+USERINCLUDE   ..\libsidplay
+USERINCLUDE   ..\libsidplay\emu
+USERINCLUDE   ..\eikon
+USERINCLUDE   ..\console
+USERINCLUDE   ..\group
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+
+// generic libraries
+LIBRARY       euser.lib efsrv.lib                   // core
+LIBRARY       apparc.lib bafl.lib cone.lib          // UI stuff
+LIBRARY       eikcore.lib                           // instead of eikon.lib 
+LIBRARY       libsidplay.lib                        // engine
+LIBRARY       mediaclientaudiostream.lib            // Media Surfer
+
+
+// UI specific libraries
+#if defined(CRYSTAL)
+LIBRARY       ckndlg.lib
+LIBRARY       cknctl.lib
+LIBRARY       eikcoctl.lib
+#elif defined(SERIES60)
+LIBRARY       avkon.lib
+#else
+LIBRARY       gdi.lib
+LIBRARY       eikcoctl.lib
+LIBRARY       eikctl.lib
+LIBRARY       eikcdlg.lib
+#endif
+
+AIF	          sidplay.aif ..\aif sidplay.rss c12 \
+              sidplay_16i.bmp sidplay_16m.bmp \
+              sidplay_24i.bmp sidplay_24m.bmp \
+              sidplay_32i.bmp sidplay_32m.bmp \
+              sidplay_48i.bmp sidplay_48m.bmp

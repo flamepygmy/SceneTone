@@ -1,0 +1,31 @@
+/**
+ * @file esidplay_er5.mmp Top level project file for the SID player for Epoc Release 5 (ESidPlay.exe)
+ *
+ * Copyright (c) 2000-2002 Alfred E. Heggestad
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License version 2 as
+ *    published by the Free Software Foundation.
+ */
+
+TARGET        esidplay.exe
+TARGETTYPE    exe
+ 
+PROJECT       esidplay
+ 
+SUBPROJECT    group
+DOCUMENT      esidplay.mmp
+SUBPROJECT    console
+SOURCE        esidplay.cpp
+SOURCE        audiodrv_epoc.cpp
+SOURCE        alaw.cpp
+SUBPROJECT    libsidplay
+SOURCE        elog.cpp // for file logging
+
+USERINCLUDE   \esidplay\console
+USERINCLUDE   \esidplay\libsidplay/include
+SYSTEMINCLUDE \epoc32\include 
+SYSTEMINCLUDE \epoc32\include/libc
+
+LIBRARY       euser.lib estlib.lib libsidplay.lib //audiodrv.lib
+LIBRARY       efsrv.lib // for file logging

@@ -1,0 +1,57 @@
+v0.11   20.1.2009       Jani Vaarala
+	 
+	"Tough Touch"-release
+
+	- S60 5th edition and touch implementation / release
+	- no 3rd edition support for this release (not sure it compiles at this stage although everything
+	  should be flagged)
+	- refactoring some code
+	
+
+v0.10   29.4.2008	Jani Vaarala
+
+	"WAPPU"-release:
+
+	- fixed the "grab defaultpath" thing to work again
+	- new open modes: from default folder or full open (with memory selection etc.)
+	- SW Volume in addition to existing HW volume (SW volume scales the samples down, NOTE:
+	  this is done in WAV generation and playback!) to get even lower volume levels
+	- capturing begin and end position for wav generation during song playback (center of direction controller)
+	- new info display that shows HW and SW volume levels
+	- new filebrowser: shows two previous and two next songs and also
+	- timeout when switching songs to make scrolling faster (starts after selection has been still for 0.5 secs)
+	- new key layout:
+	                      up/down to change song, left/right to change subsong
+			      center  to mark start of capture and end of capture (will be used for next wav gen)
+			      2/8     to change SW volume, 4/6 to change HW volume
+
+	
+v0.9    20.12.2006	Jani Vaarala
+
+	- some minor cleanup in SID to not leak memory
+	- new certificate (generated with OpenSSL -> will last longer than the current one)
+	- some other minor changes that are not compiled in (upcoming version with C++ core, Python UI)
+		
+	Note: certificate changed -> uninstall old version first.
+	
+V0.8    29.8.2006	Jani Vaarala
+
+	- added support for remembering the path across "open module" calls
+	- added support for settings file (to store persistent settings)
+	- added one persistent setting: default path 
+	- some minor cleanup (e.g., not crashing on SID songs whose init fails)
+	
+V0.7	7.8.2006	Jani Vaarala
+
+	- disabled visualizer
+	- replaced UID with allocated one
+
+	Note: UID changed -> you must first uninstall the old version and after that you can install the new version.
+
+
+V0.6	5.8.2006	Jani Vaarala
+
+	- initial version to public
+	
+	
+	

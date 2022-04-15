@@ -1,0 +1,12 @@
+EXPORTS
+	verifyEndianess__9emuEngine @ 1 NONAME ; emuEngine::verifyEndianess(void)
+	__7sidTunePCc @ 2 NONAME ; sidTune::sidTune(char const *)
+	__9emuEngine @ 3 NONAME ; emuEngine::emuEngine(void)
+	getConfig__9emuEngineR9emuConfig @ 4 NONAME ; emuEngine::getConfig(emuConfig &)
+	getInfo__7sidTuneR11sidTuneInfo @ 5 NONAME ; sidTune::getInfo(sidTuneInfo &)
+	setConfig__9emuEngineR9emuConfig @ 6 NONAME ; emuEngine::setConfig(emuConfig &)
+	sidEmuInitializeSong__FR9emuEngineR7sidTuneUs @ 7 NONAME ; sidEmuInitializeSong(emuEngine &, sidTune &, unsigned short)
+	FillBuffer__9emuEngineR7sidTunePvUl @ 8 NONAME ; emuEngine::FillBuffer(sidTune &, void *, unsigned long)
+	getSecondsThisSong__9emuEngine @ 9 NONAME ; emuEngine::getSecondsThisSong(void)
+	getSecondsTotal__9emuEngine @ 10 NONAME ; emuEngine::getSecondsTotal(void)
+
